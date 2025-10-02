@@ -1,23 +1,15 @@
 import { Link } from "react-router-dom";
 
 export function Header() {
-//     font-family: 'Rubik Glitch';
-// font-style: normal;
-// font-weight: 400;
-// font-size: 32px;
-// line-height: 38px;
-
-
-    
     return(
-        <div>
-            <div>
-                <p className="text-white font-">#HomofobiaÉCrime</p>
+        <div className="flex justify-around items-center h-28 ">
+            <div className="basis-3/5 flex justify-start pl-20">
+                <p className="text-white font-rubik-glitch text-3xl cursor-default">#HomofobiaÉCrime</p>
             </div>
-            <div>
-                <Link to='/'></Link>
-                <Link to='/'></Link>
-                <p>DENUNCIA? DISQUE 100</p>
+            <div className="text-white flex gap-14 font-bebas-neue text-2xl basis-2/5 justify-center items-center gap-14">
+                <Link to='/'>INÍCIO</Link>
+                <Link to='/'>PESQUISA</Link>
+                <button className="py-2 px-5 bg-red-500 rounded hover:bg-red-600">DENUNCIA? DISQUE 100!</button>
             </div>
         </div>
     )
