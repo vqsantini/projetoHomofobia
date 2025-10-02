@@ -1,4 +1,5 @@
 import { Header } from "./components/Header";
+import { InfoUsuário } from "./components/Perguntas";
 
 export function Pesquisa() {
 
@@ -14,8 +15,12 @@ export function Pesquisa() {
                 </div>
                 <div className="flex items-end h-[30vh]"> <img src="./Transiction.svg" className="w-screen" /></div>
             </div>
-            <div className="h-screen flex">
-
+            <div className="h-auto flex flex-col">
+                <p className="text-white font-extrabold text-5xl font-inter text-center pt-32 pb-12">RESPONDA A PESQUISA</p>
+                <div className="flex justify-center items-center h-[600px]">
+                    <InfoUsuário />
+                </div>
+                <p className="pt-24 pb-12 text-[#A6A6A6] text-center">© 2025.Todos direitos reservados a Jonathan Luis Uber e Victor Gonzaga Santini</p>
             </div>
         </div>
     )
