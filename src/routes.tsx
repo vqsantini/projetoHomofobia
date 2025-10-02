@@ -5,7 +5,6 @@ import { Home } from "./Home";
 export const router = createBrowserRouter([{
 
   path: '/',
-  element: <Home />
-
+  element: <Home />,
 }
 ]);
