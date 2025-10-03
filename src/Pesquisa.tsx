@@ -1,7 +1,11 @@
+import { useState } from "react";
 import { Header } from "./components/Header";
-import { InfoUsuário } from "./components/Perguntas";
+import { InfoUsuario } from "./components/InfoUsuário";
+import { Perguntas } from "./components/Perguntas";
 
 export function Pesquisa() {
+
+    const [step, setStep] = useState<"info" | "perguntas">("info");
 
     return (
         <div className="h-screen w-full overflow-x-hidden bg-black">
@@ -18,7 +22,12 @@ export function Pesquisa() {
             <div className="h-auto flex flex-col">
                 <p className="text-white font-extrabold text-5xl font-inter text-center pt-32 pb-12">RESPONDA A PESQUISA</p>
                 <div className="flex justify-center items-center h-[600px]">
-                    <InfoUsuário />
+                    <div className="w-full h-full flex justify-center items-center">
+                        {step === "info" && <InfoUsuario onAvancar={() => setStep("perguntas")} />}
+                        {step === "perguntas" && (
+                            <Perguntas onVoltar={() => setStep("info")}/>
+                        )}
+                    </div>
                 </div>
                 <p className="pt-24 pb-12 text-[#A6A6A6] text-center">© 2025.Todos direitos reservados a Jonathan Luis Uber e Victor Gonzaga Santini</p>
             </div>

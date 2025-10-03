@@ -1,71 +1,71 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-export function Perguntas() {
+export function Perguntas({onVoltar}: { onVoltar: () => void}) {
+  const perguntas = [
+    "Você acredita que a homofobia ainda é um problema sério na sociedade hoje?",
+    "Você já presenciou ou soube de algum caso de homofobia em sua escola, trabalho ou comunidade?",
+    "Na sua opinião, o que mais contribui para a homofobia?",
+    "Você considera importante ter leis e políticas públicas para combater a homofobia?",
+    "Você se sentiria à vontade em denunciar um ato de homofobia que presenciasse?",
+    "Você já sofreu homofobia diretamente?",
+    "Como você reagiria se visse alguém sofrendo homofobia?",
+    "Você acha que a escola/faculdade/trabalho faz o suficiente para conscientizar sobre homofobia?",
+    "Na sua opinião, como combater a homofobia de forma mais eficaz?",
+    "Você acredita que as pessoas LGBTQIAP+ têm os mesmos direitos respeitados que os demais cidadãos?"
+  ];
 
-
-
-  return (
-    ""
-  )
-}
-
-export function InfoUsuário() {
-
-  const [idade, setIdade] = useState("");
-  const [name, setName] = useState("");
-  const [error, setError] = useState("");
-  const [info, setInfo] = useState("");
-
-  const finallyRegister = () => {
-    if (!name && !idade) {
-      setError("Por favor, preencha seu nome e selecione sua faixa etária.");
-      setInfo("");
-    } else if (!name) {
-      setError("Por favor, preencha seu nome.");
-      setInfo("");
-    } else if (!idade) {
-      setError("Por favor, selecione sua faixa etária.");
-      setInfo("");
-    } else {
-      setInfo(`${name} ${idade}`);
-      setError("");
-      setName("");
-      setIdade("");
+  const alternativas = [
+    {
+      q1: "Sim", q2: "Não", q3: "Não sei"
+    }, {
+      q1: "Sim", q2: "Não",
+    }, {
+      q1: "Falta de informação/educação", q2: "Influência da família ou religião", q3: "Cultura e mídia", q4: "Outros"
+    }, {
+      q1: "Sim", q2: "Não", q3: "Não sei"
+    }, {
+      q1: "Sim", q2: "Não", q3: "Talvez"
+    }, {
+      q1: "Sim", q2: "Não", q3: "Prefiro não responder"
+    }, {
+      q1: "Intervir e ajudar a vítima", q2: "Chamaria ajuda/autoridades", q3: "Ficaria sem saber o que fazer", q4: "Não fazer nada"
+    }, {
+      q1: "Sim", q2: "Não", q3: "Parcialmente"
+    }, {
+      q1: "Educação e conscientização", q2: "Conversas e diálogo aberto", q3: "Leis mais rigorosas", q4: "Outra"
+    }, {
+      q1: "Sim", q2: "Não", q3: "Em parte"
     }
-    return ;
+  ]
 
+  const [pergunta, setPergunta] = useState(perguntas[0]);
+  const [index, setIndex] = useState(1);
+  // const [alternativa, setAlternativa] = useState(alternativas[0]);
+
+  const voltar = () => {
+    onVoltar();
   }
+
+  const avancar = () => {
+    setIndex((index) => index + 1);  
+
+    if (index == 10) {
+      
+    }
+
+    setPergunta(perguntas[index])
+    console.log(index)
+    console.log(perguntas[index])
+    // setAlternativa(alternativas[i])
+  }
+
   return (
-    <div className="w-full h-full flex justify-center items-center">
-      <div id="div-info-user" className="w-[850px] h-full border-white border-[2px] rounded-lg flex flex-col items-center justify-start pt-12 px-20 gap-10 text-white">
-        <p className="text-lg font-bebas-neue max-w-[500px] text-center text-xl">Antes de começar a pesquisa, preencha algumas informações <br /> para ajudar na análise das respostas</p>
-        <div className="w-full flex flex-col">
-          <span className="text-red-500">{error}</span>
-          <div className="flex flex-col font-inter text-[#B5B5B5] gap-6">
-            <input type="text" placeholder="Nome" id="input-name" value={name} onChange={(e) => setName(e.target.value)} className="text-white bg-black border-b-[1px] border-white py-2 focus:outline-none" />
-
-            <p>Faixa Etária: <span>{info}</span></p>
-            <div className="flex flex-col gap-3">
-              <label className="flex items-center gap-2">
-                <input type="radio" name="idade" value="5-12" checked={idade === "5-12"} onChange={(e) => setIdade(e.target.value)} /> 5 - 12
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="radio" name="idade" value="13-17" checked={idade === "13-17"} onChange={(e) => setIdade(e.target.value)} /> 13 - 17
-              </label>
-              <label className="flex items-center gap-2">
-                <input type="radio" name="idade" value="18-45" checked={idade === "18-45"} onChange={(e) => setIdade(e.target.value)} /> 18 - 45 </label>
-              <label className="flex items-center gap-2">
-                <input type="radio" name="idade" value="46+" checked={idade === "46+"} onChange={(e) => setIdade(e.target.value)} /> 46+
-              </label>
-            </div>
-
-            <div className="flex flex-col items-center mt-6 gap-4 ">
-
-              <button className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={finallyRegister}> AVANÇAR </button>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div className="w-[850px] h-full border-white border-[2px] rounded-lg flex flex-col items-center justify-start pt-12 px-20 gap-10 text-white">
+      <p>{pergunta}</p>
+      <button className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={voltar}>VOLTAR</button>
+      <button className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={avancar}> {index === 10 ? `<Link>FINALIZAR<Link/>`: "AVANÇAR"}  </button>
     </div>
   )
 }
+
