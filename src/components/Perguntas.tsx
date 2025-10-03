@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
-export function Perguntas({onVoltar}: { onVoltar: () => void}) {
+export function Perguntas({ onVoltar }: { onVoltar: () => void }) {
   const perguntas = [
     "Você acredita que a homofobia ainda é um problema sério na sociedade hoje?",
     "Você já presenciou ou soube de algum caso de homofobia em sua escola, trabalho ou comunidade?",
@@ -40,31 +39,38 @@ export function Perguntas({onVoltar}: { onVoltar: () => void}) {
   ]
 
   const [pergunta, setPergunta] = useState(perguntas[0]);
-  const [index, setIndex] = useState(1);
+  const [index, setIndex] = useState(0);
   // const [alternativa, setAlternativa] = useState(alternativas[0]);
 
   const voltar = () => {
-    onVoltar();
+    if(index >= 1){
+      setIndex((index) => index - 1)
+    } else if(index == 0) {
+      onVoltar();
+    }
+    setPergunta(perguntas[index])
   }
 
   const avancar = () => {
-    setIndex((index) => index + 1);  
+    setIndex((index) => index + 1);
 
     if (index == 10) {
-      
+
     }
 
     setPergunta(perguntas[index])
-    console.log(index)
-    console.log(perguntas[index])
     // setAlternativa(alternativas[i])
   }
-
+  console.log(index)
+  console.log(perguntas[index])
   return (
     <div className="w-[850px] h-full border-white border-[2px] rounded-lg flex flex-col items-center justify-start pt-12 px-20 gap-10 text-white">
-      <p>{pergunta}</p>
-      <button className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={voltar}>VOLTAR</button>
-      <button className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={avancar}> {index === 10 ? `<Link>FINALIZAR<Link/>`: "AVANÇAR"}  </button>
+      <p className="font-bebas-neue max-w-[500px] text-center text-2xl">{pergunta}</p>
+      <div className="flex gap-10 justify-end">
+        <button className="bg-red-600 hover:bg-red-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={voltar}>VOLTAR</button>
+        <button className="bg-green-600 hover:bg-green-700 px-4 py-2 rounded font-inter font-bold text-lg" onClick={avancar}> {index === 10 ? "FINALIZAR" : "AVANÇAR"}  </button>
+      </div>
+
     </div>
   )
 }

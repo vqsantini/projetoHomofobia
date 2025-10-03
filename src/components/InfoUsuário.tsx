@@ -20,7 +20,7 @@ export function InfoUsuario({ onAvancar }: { onAvancar: () => void }) {
   }
   return (
     <div className="w-[850px] h-full border-white border-[2px] rounded-lg flex flex-col items-center justify-start pt-12 px-20 gap-10 text-white">
-      <p className="text-lg font-bebas-neue max-w-[500px] text-center text-xl">Antes de começar a pesquisa, preencha algumas informações <br /> para ajudar na análise das respostas</p>
+      <p className="font-bebas-neue max-w-[500px] text-center text-2xl">Antes de começar a pesquisa, preencha algumas informações <br /> para ajudar na análise das respostas</p>
       <div className="w-full flex flex-col">
         <span className="text-red-500">{error}</span>
         <div className="flex flex-col font-inter text-[#B5B5B5] gap-6">
