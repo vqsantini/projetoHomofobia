@@ -25,7 +25,7 @@ export function Pesquisa() {
                     <div className="w-full h-full flex justify-center items-center">
                         {step === "info" && <InfoUsuario onAvancar={() => setStep("perguntas")} />}
                         {step === "perguntas" && (
-                            <Perguntas onVoltar={() => setStep("info")}/>
+                            <Perguntas onVoltar={() => setStep("info")} />
                         )}
                     </div>
                 </div>

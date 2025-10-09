@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function Header() {
     return (
-        <div className="flex w-[calc(100vw-80px)] justify-around items-center h-28 ">
+        <div className="flex w-screen justify-around items-center h-28 ">
             <div className="basis-3/5 flex justify-start pl-20 md:flex-1">
                 <p className="text-white font-rubik-glitch text-3xl cursor-default ">#HomofobiaÉCrime</p>
             </div>
